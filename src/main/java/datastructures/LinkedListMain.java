@@ -20,7 +20,7 @@ public class LinkedListMain {
         linkedList.addNodePosition(13, 0);
         linkedList.addNodePosition(32, 5);
 
-        System.out.println("Added a Node");
+        System.out.println("Adding a Node");
         linkedList.printLinkedList();
 
         linkedList.deleteNodePosition(4);
@@ -32,6 +32,10 @@ public class LinkedListMain {
         linkedList.deleteByValue(19);
         linkedList.printLinkedList();
 
+
+        System.out.println("Reverse Linkedlist");
+        linkedList.reverseLinkedList();
+        linkedList.printLinkedList();
 
     }
 
@@ -130,6 +134,25 @@ class LinkedList {
 
     public void reverseLinkedList(){
 
+        Node firstToLast = head;
+        Node next = head;
+        Node previous = null;
+        while(firstToLast.getNextNode() != null) {
+
+            if(next.getNextNode()== null){
+                Node prevHead = head;
+                head = next;
+                next.setNextNode(prevHead);
+                if(previous == firstToLast){
+                    firstToLast.setNextNode(null);
+                }
+                previous.setNextNode(null);
+            }else {
+                previous = next;
+                next = next.getNextNode();
+
+            }
+        }
 
     }
 
@@ -213,7 +236,4 @@ class Node {
         return data;
     }
 
-    public void setData(int data) {
-        this.data = data;
-    }
 }
