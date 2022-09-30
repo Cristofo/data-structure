@@ -1,4 +1,4 @@
-package datastructures;
+package datastructure.linkedlist;
 
 public class LinkedListMain {
 
@@ -34,7 +34,10 @@ public class LinkedListMain {
 
 
         System.out.println("Reverse Linkedlist");
-        linkedList.reverseLinkedList();
+        //linkedList.reverseLinkedList();
+        //linkedList.reverseLinkedList2();
+        //linkedList.reverseLinkedListUltimate();
+        linkedList.reverseLinkedListRecursion(linkedList.head);
         linkedList.printLinkedList();
 
     }
@@ -154,8 +157,72 @@ class LinkedList {
             }
         }
 
+
+
+
+
     }
 
+    public void reverseLinkedList2(){
+
+        Node firstToLast = head;
+        Node next = head;
+        Node previous = null;
+        while(firstToLast.getNextNode() != null) {
+           previous = next;
+           next = next.getNextNode();
+           if(next.getNextNode() == null){
+               previous.setNextNode(null);
+               Node temp = head;
+               Node prevTemp = null;
+               while(true){
+                   if(temp == firstToLast){
+                       if(prevTemp == null){
+                           head = next;
+                           head.setNextNode(temp);
+                       } else {
+                           prevTemp.setNextNode(next);
+                           next.setNextNode(firstToLast);
+
+                       }
+                       break;
+                   } else{
+                       prevTemp = temp;
+                       temp = temp.getNextNode();
+                   }
+               }
+           }
+        }
+    }
+
+    public void reverseLinkedListUltimate(){
+
+        // 1 2 3 4 5
+
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while(current != null){
+            next = current.getNextNode();
+            current.setNextNode(prev);
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
+
+    public Node reverseLinkedListRecursion(Node node){
+        if(node == null || node.getNextNode() == null){
+            return node;
+        }
+        // 1 2 3 4 5
+        Node reverseLinkedList = reverseLinkedListRecursion(node.getNextNode());
+        node.getNextNode().setNextNode(node);
+        node.setNextNode(null);
+        return reverseLinkedList;
+
+    }
 
 
     public boolean isOutOfRangeAdd(int position){
