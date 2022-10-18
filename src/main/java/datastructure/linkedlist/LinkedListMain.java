@@ -157,10 +157,6 @@ class LinkedList {
             }
         }
 
-
-
-
-
     }
 
     public void reverseLinkedList2(){
@@ -201,7 +197,7 @@ class LinkedList {
 
         Node prev = null;
         Node current = head;
-        Node next = null;
+        Node next;
         while(current != null){
             next = current.getNextNode();
             current.setNextNode(prev);
