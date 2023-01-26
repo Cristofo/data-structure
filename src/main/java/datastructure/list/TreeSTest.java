@@ -26,7 +26,7 @@ public class TreeSTest {
         System.out.println("print data sorted");
         TreeSet<Person> collectTreeSet = setTest.stream().sorted().collect(Collectors.toCollection(TreeSet::new));
         collectTreeSet.forEach(System.out::println);
-        Hashtable<> hashtable = new Hashtable<>();
+        //Hashtable<> hashtable = new Hashtable<>();
 
     }
 
